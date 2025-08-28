@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Student Data Management</h1>
+    <div id="student-list"></div>
+    <script>
+          const API_URL = 'https://bsf6c7ib6g.execute-api.eu-north-1.amazonaws.com/prod/students';
+        
+        async function fetchStudents() {
+            const response = await fetch(API_URL);
+            const students = await response.json();
+            const listElement = document.getElementById('student-list');
+            listElement.innerHTML = ''; // Clear previous data
+            students.forEach(student => {
+                const studentDiv = document.createElement('div');
+                studentDiv.textContent = `ID: ${student.studentId}, Name: ${student.name}, Percentage: ${student.percentage}`;
+                listElement.appendChild(studentDiv);
+            });
+        }
+        
+        fetchStudents();
+    </script>
+</body>
+</html>
