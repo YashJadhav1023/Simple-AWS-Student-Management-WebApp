@@ -1,4 +1,4 @@
-# Simple-AWS-Student-Management-WebApp
+
 # Serverless Student Data Management Web Application on AWS
 
 ## Project Overview
